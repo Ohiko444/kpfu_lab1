@@ -13,9 +13,6 @@ public class LoginTest {
     public static ProfilePage profilePage;
     public static WebDriver driver;
 
-    /**
-     * осуществление первоначальной настройки
-     */
     @BeforeClass
     public static void setup() {
         System.setProperty("webdriver.edge.driver", "C:\\Users\\misti\\Desktop\\edge\\msedgedriver.exe");
@@ -27,14 +24,9 @@ public class LoginTest {
         driver.get(ConfProperties.getProperty("loginpage"));
     }
 
-    /**
-     * тестовый метод для осуществления аутентификации
-     */
+
     @Test
     public void loginTest() {
-        //получение доступа к методам класса LoginPage для взаимодействия с элементами страницы
-        //значение login/password берутся из файла настроек по аналогии с edgedriver
-        //и loginpage
         loginPage.openLoginWindow();
         //вводим логин
         loginPage.inputLogin(ConfProperties.getProperty("login"));
@@ -42,16 +34,13 @@ public class LoginTest {
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         //нажимаем кнопку входа
         loginPage.clickLoginBtn();
-        //получаем отображаемый логин
+        //получаем имя пользователя
         String user = profilePage.getUserName();
         System.out.println(user);
         //и сравниваем его с логином из файла настроек
         //Assert.assertEquals(ConfProperties.getProperty("login"), user);
     }
 
-    /**
-     * осуществление выхода из аккаунта с последующим закрытием окна браузера
-     */
     @AfterClass
     public static void tearDown() {
         profilePage.entryMenu();

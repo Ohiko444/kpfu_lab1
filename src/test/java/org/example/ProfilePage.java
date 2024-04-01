@@ -10,30 +10,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ProfilePage {
-    /**
-     * конструктор класса, занимающийся инициализацией полей класса
-     */
+
     public WebDriver driver;
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    /**
-     * определение локатора меню пользователя
-     */
+
     @FindBy(id = "user_name") // изменен локатор на id
     private WebElement userMenu;
 
-    /**
-     * определение локатора кнопки выхода из аккаунта
-     */
+
     @FindBy(xpath = "//a[@href='/user/logout']")
     private WebElement logoutBtn;
 
-    /**
-     * метод для получения имени пользователя из меню пользователя
-     */
+
     public String getUserName() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(userMenu)); // изменен локатор на элемент
@@ -41,16 +33,10 @@ public class ProfilePage {
         return userName;
     }
 
-    /**
-     * метод для нажатия кнопки меню пользователя
-     */
     public void entryMenu() {
         userMenu.click();
     }
-
-    /**
-     * метод для нажатия кнопки выхода из аккаунта
-     */
+    
     public void userLogout() {
         logoutBtn.click();
     }

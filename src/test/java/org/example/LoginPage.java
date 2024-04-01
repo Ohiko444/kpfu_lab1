@@ -11,10 +11,8 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    // Локатор для кнопки, открывающей окно для ввода логина и пароля
     @FindBy(className = "login")
     private WebElement openLoginWindowButton;
-    // Локаторы для полей ввода логина и пароля
     @FindBy(xpath = "//*[contains(@id, 'p_login')]")
     private WebElement loginField;
     @FindBy(xpath = "//input[@id='start-auth']")
@@ -28,18 +26,15 @@ public class LoginPage {
         openLoginWindowButton.click();
     }
 
-    // Метод для ввода логина
     public void inputLogin(String login) {
         loginField.sendKeys(login);
     }
 
-    // Метод для ввода пароля
     public void inputPasswd(String passwd) {
 
         passwdField.sendKeys(passwd);
     }
 
-    // Метод для нажатия кнопки входа в аккаунт
     public void clickLoginBtn() {
         loginBtn.click();
     }
